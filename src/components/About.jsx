@@ -1,46 +1,129 @@
+import { motion } from 'framer-motion';
+
 function About() {
     const stats = [
-        { number: '50+', label: 'Projects' },
-        { number: '15+', label: 'Happy Clients' },
-        { number: '1+', label: 'Years Experience' }
+        { number: '50+', label: 'Projects Completed' },
+        { number: '40+', label: 'Happy Clients' },
+        { number: '2+', label: 'Years Experience' },
+        { number: '100%', label: 'Client Satisfaction' }
     ];
+
+    // Title animation
+    const titleVariants = {
+        hidden: { opacity: 0, y: 30 },
+        visible: {
+            opacity: 1,
+            y: 0,
+            transition: { duration: 0.6, ease: "easeOut" }
+        }
+    };
+
+    // Stats animation
+    const statsContainerVariants = {
+        hidden: {},
+        visible: {
+            transition: {
+                staggerChildren: 0.15,
+                delayChildren: 0.3
+            }
+        }
+    };
+
+    const statItemVariants = {
+        hidden: { opacity: 0, scale: 0.8, y: 20 },
+        visible: {
+            opacity: 1,
+            scale: 1,
+            y: 0,
+            transition: { duration: 0.5, ease: "easeOut" }
+        }
+    };
 
     return (
         <section className="about section" id="about">
             <div className="container">
-                <div className="about-content">
-                    <div className="about-text">
-                        <h2 className="gradient-text">Who We Are</h2>
+                <motion.div
+                    className="about-content"
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.3 }}
+                    variants={{
+                        hidden: {},
+                        visible: { transition: { staggerChildren: 0.2 } }
+                    }}
+                >
+                    <motion.div className="about-text" variants={titleVariants}>
+                        <h2 className="section-title">Why Choose KAdigtech?</h2>
                         <p>
-                            KAdigtech is a modern website design and web development company dedicated to helping startups, small businesses, and entrepreneurs build a powerful online presence. We specialize in creating professional, fast, and user-friendly websites that help businesses attract customers, increase trust, and grow digitally.
+                            We're a passionate team dedicated to creating beautiful,
+                            functional websites that help businesses grow online.
+                            Our focus is on delivering quality work that exceeds expectations.
                         </p>
                         <p>
-                            Our team focuses on clean design, high performance, and SEO optimization to ensure every website not only looks great but also ranks higher on search engines like Google. From simple business websites to advanced web applications and e-commerce platforms, we deliver reliable and scalable digital solutions tailored to your goals.
+                            From simple landing pages to complex web applications,
+                            we have the expertise to bring your vision to life.
                         </p>
-                        <p>
-                            At KAdigtech, we don't just build websites — we build digital experiences that drive real business growth.
-                        </p>
+                    </motion.div>
 
-                        <div className="about-stats">
-                            {stats.map((stat, index) => (
-                                <div className="stat-item" key={index}>
-                                    <span className="stat-number">{stat.number}</span>
-                                    <span className="stat-label">{stat.label}</span>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
+                    <motion.div
+                        className="about-stats"
+                        variants={statsContainerVariants}
+                    >
+                        {stats.map((stat, index) => (
+                            <motion.div
+                                key={index}
+                                className="stat-item"
+                                variants={statItemVariants}
+                                whileHover={{
+                                    scale: 1.1,
+                                    y: -5,
+                                    transition: { duration: 0.2 }
+                                }}
+                            >
+                                <motion.span
+                                    className="stat-number"
+                                    initial={{ opacity: 0, scale: 0 }}
+                                    whileInView={{ opacity: 1, scale: 1 }}
+                                    transition={{ delay: 0.3 + index * 0.1, type: "spring" }}
+                                    viewport={{ once: true }}
+                                >
+                                    {stat.number}
+                                </motion.span>
+                                <span className="stat-label">{stat.label}</span>
+                            </motion.div>
+                        ))}
+                    </motion.div>
+                </motion.div>
 
-                    <div className="about-visual">
-                        <div className="about-card glass-card">
-                            <div className="about-card-icon">🚀</div>
-                            <h3>Our Mission</h3>
-                            <p>
-                                Our mission is to empower businesses with smart, modern, and result-driven website solutions that improve visibility, generate leads, and accelerate growth. We aim to provide affordable, high-quality web development services that help every business succeed online.
-                            </p>
-                        </div>
-                    </div>
-                </div>
+                <motion.div
+                    className="about-mission glass-card"
+                    initial={{ opacity: 0, x: 60 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.7, delay: 0.3 }}
+                    viewport={{ once: true }}
+                    whileHover={{ scale: 1.02 }}
+                >
+                    <motion.div
+                        className="mission-icon"
+                        animate={{
+                            y: [0, -10, 0],
+                            rotate: [0, 5, -5, 0]
+                        }}
+                        transition={{
+                            duration: 4,
+                            repeat: Infinity,
+                            ease: "easeInOut"
+                        }}
+                    >
+                        🎯
+                    </motion.div>
+                    <h3>Our Mission</h3>
+                    <p>
+                        To empower businesses with professional web presence that drives
+                        growth and success in the digital world. We believe every business
+                        deserves a website that works as hard as they do.
+                    </p>
+                </motion.div>
             </div>
         </section>
     );

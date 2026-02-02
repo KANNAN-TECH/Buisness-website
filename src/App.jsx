@@ -1,3 +1,4 @@
+import { ThemeProvider } from "./context/ThemeContext";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Services from "./components/Services";
@@ -10,7 +11,7 @@ import WhatsAppButton from "./components/WhatsAppButton";
 
 function App() {
     return (
-        <>
+        <ThemeProvider>
             <Navbar />
             <main>
                 <Hero />
@@ -22,7 +23,7 @@ function App() {
             </main>
             <WhatsAppButton />
             <Footer />
-        </>
+        </ThemeProvider>
     );
 }
 

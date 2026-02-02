@@ -1,62 +1,146 @@
-import React from 'react';
-import { Star, Quote } from 'lucide-react';
+import { motion } from 'framer-motion';
 
-const Testimonials = () => {
+function Testimonials() {
     const testimonials = [
         {
-            name: "Arun Kumar",
-            role: "Startup Founder",
-            content: "KAdigtech delivered our business website faster than expected. The design is modern and professional, and we started getting leads within weeks. Highly recommended!",
+            name: 'Priya Sharma',
+            role: 'Boutique Owner',
+            content: 'KAdigtech transformed my small business with a stunning website. Sales increased by 40% in just 2 months!',
             rating: 5
         },
         {
-            name: "Priya Sharma",
-            role: "Small Business Owner",
-            content: "Very responsive team and excellent support. They understood our requirements perfectly and built exactly what we needed. Great experience working with them.",
+            name: 'Rajesh Kumar',
+            role: 'Restaurant Owner',
+            content: 'The team delivered beyond expectations. Our online orders have doubled since the new website launch.',
             rating: 5
         },
         {
-            name: "Rahul Mehta",
-            role: "E-Commerce Store Owner",
-            content: "Our website performance improved a lot after their optimization. Clean design, fast loading, and SEO friendly. Worth every rupee.",
+            name: 'Anitha Devi',
+            role: 'Fitness Coach',
+            content: 'Professional, responsive, and creative. They understood exactly what I needed for my fitness brand.',
             rating: 5
         }
     ];
 
-    return (
-        <section className="section testimonials" id="testimonials">
-            <div className="container">
-                <h2 className="section-title">What Our Clients Say</h2>
-                <p className="section-subtitle">
-                    Trusted by startups and businesses across India
-                </p>
+    // Title animation
+    const titleVariants = {
+        hidden: { opacity: 0, y: 30 },
+        visible: {
+            opacity: 1,
+            y: 0,
+            transition: { duration: 0.6, ease: "easeOut" }
+        }
+    };
 
-                <div className="testimonials-grid">
+    // Card container
+    const containerVariants = {
+        hidden: {},
+        visible: {
+            transition: {
+                staggerChildren: 0.2,
+                delayChildren: 0.3
+            }
+        }
+    };
+
+    // Card animation
+    const cardVariants = {
+        hidden: { opacity: 0, y: 50, scale: 0.9 },
+        visible: {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            transition: { duration: 0.5, ease: "easeOut" }
+        }
+    };
+
+    return (
+        <section className="testimonials section" id="testimonials">
+            <div className="container">
+                <motion.div
+                    className="section-header"
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.3 }}
+                    variants={{
+                        hidden: {},
+                        visible: { transition: { staggerChildren: 0.15 } }
+                    }}
+                >
+                    <motion.h2
+                        className="section-title"
+                        variants={titleVariants}
+                    >
+                        What Our Clients Say
+                    </motion.h2>
+
+                    <motion.p
+                        className="section-subtitle"
+                        variants={titleVariants}
+                    >
+                        Real results from real businesses we've helped grow
+                    </motion.p>
+                </motion.div>
+
+                <motion.div
+                    className="testimonials-grid"
+                    variants={containerVariants}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.2 }}
+                >
                     {testimonials.map((testimonial, index) => (
-                        <div key={index} className="glass-card testimonial-card animate-fadeInUp" style={{ animationDelay: `${index * 0.2}s` }}>
-                            <div className="testimonial-top">
-                                <div className="star-rating">
-                                    {[...Array(testimonial.rating)].map((_, i) => (
-                                        <Star key={i} size={16} fill="currentColor" />
-                                    ))}
-                                </div>
-                                <Quote className="quote-icon" size={24} style={{ opacity: 0.2, marginBottom: '15px' }} />
-                                <p className="testimonial-content">
-                                    "{testimonial.content}"
-                                </p>
-                            </div>
+                        <motion.div
+                            key={index}
+                            className="testimonial-card glass-card"
+                            variants={cardVariants}
+                            whileHover={{
+                                scale: 1.03,
+                                y: -8,
+                                transition: { duration: 0.3 }
+                            }}
+                        >
+                            <motion.div
+                                className="testimonial-rating"
+                                initial="hidden"
+                                whileInView="visible"
+                                viewport={{ once: true }}
+                                variants={{
+                                    hidden: {},
+                                    visible: {
+                                        transition: { staggerChildren: 0.1, delayChildren: 0.5 }
+                                    }
+                                }}
+                            >
+                                {[...Array(testimonial.rating)].map((_, i) => (
+                                    <motion.span
+                                        key={i}
+                                        className="star"
+                                        variants={{
+                                            hidden: { opacity: 0, scale: 0, rotate: -180 },
+                                            visible: {
+                                                opacity: 1,
+                                                scale: 1,
+                                                rotate: 0,
+                                                transition: { type: "spring", stiffness: 300 }
+                                            }
+                                        }}
+                                    >
+                                        ⭐
+                                    </motion.span>
+                                ))}
+                            </motion.div>
+                            <p className="testimonial-content">"{testimonial.content}"</p>
                             <div className="testimonial-author">
-                                <div className="author-info">
-                                    <h4>{testimonial.name}</h4>
-                                    <p>{testimonial.role}</p>
-                                </div>
+                                <strong>{testimonial.name}</strong>
+                                <span>{testimonial.role}</span>
                             </div>
-                        </div>
+                        </motion.div>
                     ))}
-                </div>
+                </motion.div>
             </div>
         </section>
     );
-};
+}
 
 export default Testimonials;

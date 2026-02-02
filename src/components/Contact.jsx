@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { motion } from 'framer-motion';
+import AnimatedSection from './AnimatedSection';
 
 function Contact() {
     const [formData, setFormData] = useState({
@@ -89,32 +91,56 @@ function Contact() {
         }
     };
 
+    const formFieldVariants = {
+        hidden: { opacity: 0, x: 30 },
+        visible: (i) => ({
+            opacity: 1,
+            x: 0,
+            transition: {
+                delay: i * 0.1,
+                duration: 0.5,
+                ease: [0.25, 0.1, 0.25, 1]
+            }
+        })
+    };
+
     return (
         <section className="contact section" id="contact">
             <div className="container">
-                <h2 className="section-title">Let’s Talk About Your Project</h2>
-                <p className="section-subtitle">
-                    Have an idea or project in mind? Contact KAdigtech today and let’s build something amazing together.
-                </p>
+                <AnimatedSection variant="fadeUp" delay={0}>
+                    <h2 className="section-title">Let's Build Something Amazing Together</h2>
+                </AnimatedSection>
+
+                <AnimatedSection variant="fadeUp" delay={0.1}>
+                    <p className="section-subtitle">
+                        Tell us your idea. We'll handle the rest.
+                    </p>
+                </AnimatedSection>
 
                 <div className="contact-content">
-                    <div className="contact-info">
-                        <h3>Let's Talk</h3>
+                    <AnimatedSection variant="fadeLeft" delay={0.2} className="contact-info">
+                        <h3>Get In Touch</h3>
                         <p>
-                            Have a project in mind? We'd love to hear about it.
-                            Get in touch and let's create something amazing together.
+                            Ready to start your project? Drop us a message and
+                            let's create something amazing together.
                         </p>
 
                         <div className="contact-details">
-                            <div className="contact-item">
+                            <motion.div
+                                className="contact-item"
+                                whileHover={{ x: 5, transition: { duration: 0.2 } }}
+                            >
                                 <span className="contact-item-icon">📍</span>
                                 <div>
                                     <strong>Address</strong>
                                     <p>Tiruvannamalai, Tamil Nadu, India</p>
                                 </div>
-                            </div>
+                            </motion.div>
 
-                            <div className="contact-item">
+                            <motion.div
+                                className="contact-item"
+                                whileHover={{ x: 5, transition: { duration: 0.2 } }}
+                            >
                                 <a href="mailto:kadigtech@gmail.com" className="contact-item-link">
                                     <span className="contact-item-icon">📧</span>
                                     <div>
@@ -122,9 +148,12 @@ function Contact() {
                                         <p>kadigtech@gmail.com</p>
                                     </div>
                                 </a>
-                            </div>
+                            </motion.div>
 
-                            <div className="contact-item">
+                            <motion.div
+                                className="contact-item"
+                                whileHover={{ x: 5, transition: { duration: 0.2 } }}
+                            >
                                 <a href="tel:+917010585097" className="contact-item-link">
                                     <span className="contact-item-icon">📞</span>
                                     <div>
@@ -132,12 +161,22 @@ function Contact() {
                                         <p>+91 7010585097</p>
                                     </div>
                                 </a>
-                            </div>
+                            </motion.div>
                         </div>
-                    </div>
+                    </AnimatedSection>
 
-                    <form className="contact-form" onSubmit={handleSubmit}>
-                        <div className={`form-group ${errors.name ? 'error' : ''}`}>
+                    <motion.form
+                        className="contact-form"
+                        onSubmit={handleSubmit}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, amount: 0.3 }}
+                    >
+                        <motion.div
+                            className={`form-group ${errors.name ? 'error' : ''}`}
+                            custom={0}
+                            variants={formFieldVariants}
+                        >
                             <input
                                 type="text"
                                 name="name"
@@ -147,9 +186,13 @@ function Contact() {
                                 onChange={handleChange}
                             />
                             <span className="form-error">{errors.name}</span>
-                        </div>
+                        </motion.div>
 
-                        <div className={`form-group ${errors.email ? 'error' : ''}`}>
+                        <motion.div
+                            className={`form-group ${errors.email ? 'error' : ''}`}
+                            custom={1}
+                            variants={formFieldVariants}
+                        >
                             <input
                                 type="email"
                                 name="email"
@@ -159,9 +202,13 @@ function Contact() {
                                 onChange={handleChange}
                             />
                             <span className="form-error">{errors.email}</span>
-                        </div>
+                        </motion.div>
 
-                        <div className={`form-group ${errors.subject ? 'error' : ''}`}>
+                        <motion.div
+                            className={`form-group ${errors.subject ? 'error' : ''}`}
+                            custom={2}
+                            variants={formFieldVariants}
+                        >
                             <input
                                 type="text"
                                 name="subject"
@@ -171,9 +218,13 @@ function Contact() {
                                 onChange={handleChange}
                             />
                             <span className="form-error">{errors.subject}</span>
-                        </div>
+                        </motion.div>
 
-                        <div className={`form-group ${errors.message ? 'error' : ''}`}>
+                        <motion.div
+                            className={`form-group ${errors.message ? 'error' : ''}`}
+                            custom={3}
+                            variants={formFieldVariants}
+                        >
                             <textarea
                                 name="message"
                                 placeholder="Tell us about your project requirements"
@@ -182,16 +233,38 @@ function Contact() {
                                 onChange={handleChange}
                             ></textarea>
                             <span className="form-error">{errors.message}</span>
-                        </div>
+                        </motion.div>
 
-                        <button type="submit" className="btn btn-primary" disabled={isSubmitting}>
-                            {isSubmitting ? 'Sending...' : 'Send Message'}
-                        </button>
+                        <motion.button
+                            type="submit"
+                            className="btn btn-primary"
+                            disabled={isSubmitting}
+                            custom={4}
+                            variants={formFieldVariants}
+                            whileHover={{ scale: 1.03, y: -2 }}
+                            whileTap={{ scale: 0.97 }}
+                        >
+                            {isSubmitting ? (
+                                <motion.span
+                                    animate={{ opacity: [1, 0.5, 1] }}
+                                    transition={{ duration: 1, repeat: Infinity }}
+                                >
+                                    Sending...
+                                </motion.span>
+                            ) : (
+                                'Send Message'
+                            )}
+                        </motion.button>
 
-                        <div className={`form-success ${isSubmitted ? 'show' : ''}`}>
+                        <motion.div
+                            className={`form-success ${isSubmitted ? 'show' : ''}`}
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={isSubmitted ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
+                            transition={{ duration: 0.3 }}
+                        >
                             ✅ Message sent successfully
-                        </div>
-                    </form>
+                        </motion.div>
+                    </motion.form>
                 </div>
             </div>
         </section>
