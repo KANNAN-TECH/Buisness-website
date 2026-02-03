@@ -110,7 +110,6 @@ function Services() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
-          style={{ gridTemplateColumns: 'repeat(3, 1fr)' }}
         >
           {services.map((service, index) => (
             <motion.div

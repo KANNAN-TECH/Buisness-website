@@ -827,17 +827,44 @@ html.light .glass-navbar {
 
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 30px;
-  max-width: 900px;
+  gap: 20px;
+  padding: 20px;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
+/* Desktop - 3 columns */
+@media (min-width: 1024px) {
+  .services-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+  }
+}
+
+/* Tablet - 2 columns */
+@media (min-width: 641px) and (max-width: 1023px) {
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+  }
+}
+
+/* Mobile - 1 column */
+@media (max-width: 640px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 15px;
+  }
+}
+
 .service-card {
-  padding: 40px 30px;
+  padding: 28px 24px;
   text-align: center;
   position: relative;
   overflow: hidden;
+  border-radius: 16px;
+  height: auto;
 }
 
 .service-card::before {
@@ -858,27 +885,41 @@ html.light .glass-navbar {
 }
 
 .service-icon {
-  font-size: 3rem;
-  margin-bottom: 20px;
+  font-size: 2.5rem;
+  margin-bottom: 16px;
   display: block;
 }
 
 .service-card h3 {
-  font-size: 1.4rem;
-  margin-bottom: 15px;
+  font-size: 1.125rem;
+  margin-bottom: 12px;
   color: var(--text-primary);
 }
 
 .service-card p {
   color: var(--text-secondary);
   font-size: 0.95rem;
-  line-height: 1.7;
+  line-height: 1.6;
+  margin: 0;
 }
 
-/* ========== ABOUT SECTION ========== */
-@media (max-width: 768px) {
-  .services-grid {
-    grid-template-columns: 1fr;
+/* Mobile card text improvements */
+@media (max-width: 640px) {
+  .service-card {
+    padding: 24px 20px;
+  }
+
+  .service-card h3 {
+    font-size: 1.1rem;
+  }
+
+  .service-card p {
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
+  .service-icon {
+    font-size: 2.25rem;
   }
 }
 
