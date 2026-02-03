@@ -1022,6 +1022,8 @@ html.light .glass-navbar {
 .about {
   background: var(--bg-dark);
   position: relative;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .about::before {
@@ -1040,17 +1042,25 @@ html.light .glass-navbar {
   grid-template-columns: 1fr 1fr;
   gap: 60px;
   align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.about-text {
+  max-width: 600px;
 }
 
 .about-text h2 {
-  font-size: clamp(2rem, 4vw, 2.5rem);
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
   margin-bottom: 20px;
+  line-height: 1.2;
 }
 
 .about-text p {
   color: var(--text-secondary);
-  margin-bottom: 30px;
-  line-height: 1.8;
+  margin-bottom: 20px;
+  line-height: 1.7;
+  font-size: 1rem;
 }
 
 .about-stats {
@@ -1065,7 +1075,7 @@ html.light .glass-navbar {
 }
 
 .stat-number {
-  font-size: 2.5rem;
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
   font-weight: 800;
   background: var(--gradient-primary);
   -webkit-background-clip: text;
@@ -1078,6 +1088,57 @@ html.light .glass-navbar {
   color: var(--text-muted);
   font-size: 0.9rem;
   margin-top: 5px;
+}
+
+/* About Mobile Responsive */
+@media (max-width: 768px) {
+  .about {
+    padding: 60px 16px;
+  }
+
+  .about::before {
+    display: none;
+  }
+
+  .about-content {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    text-align: center;
+  }
+
+  .about-text {
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .about-text h2 {
+    font-size: 1.75rem;
+    margin-bottom: 16px;
+  }
+
+  .about-text p {
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 16px;
+    text-align: center;
+  }
+
+  .about-stats {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+
+  .stat-item {
+    padding: 15px 10px;
+  }
+
+  .stat-number {
+    font-size: 1.5rem;
+  }
+
+  .stat-label {
+    font-size: 0.8rem;
+  }
 }
 
 .about-visual {
