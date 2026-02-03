@@ -3,6 +3,37 @@
    Premium Design System
 ======================================== */
 
+/* ========== GLOBAL OVERFLOW FIX ========== */
+/* Prevent horizontal scroll on all devices */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  overflow-x: hidden;
+  max-width: 100%;
+  width: 100%;
+}
+
+/* Prevent any element from causing overflow */
+section,
+div,
+img,
+video,
+iframe,
+canvas {
+  max-width: 100%;
+}
+
+img {
+  height: auto;
+}
+
 /* ========== CSS VARIABLES ========== */
 /* 🎨 DUAL THEME SYSTEM
    Light Mode: Royal Blue + White (Corporate/Startup)
