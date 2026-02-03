@@ -1102,7 +1102,7 @@ html.light .glass-navbar {
 
   .about-content {
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 30px;
     text-align: center;
   }
 
@@ -1123,9 +1123,12 @@ html.light .glass-navbar {
     text-align: center;
   }
 
+  /* 2x2 grid for 4 stats on mobile */
   .about-stats {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    max-width: 320px;
+    margin: 0 auto;
   }
 
   .stat-item {
@@ -1137,7 +1140,31 @@ html.light .glass-navbar {
   }
 
   .stat-label {
-    font-size: 0.8rem;
+    font-size: 0.75rem;
+    line-height: 1.3;
+  }
+
+  /* Mission card mobile */
+  .about-mission {
+    margin: 20px auto 0;
+    max-width: 100%;
+    padding: 24px 20px;
+    text-align: center;
+  }
+
+  .about-mission h3 {
+    font-size: 1.25rem;
+    margin-bottom: 12px;
+  }
+
+  .about-mission p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .mission-icon {
+    font-size: 2.5rem;
+    margin-bottom: 12px;
   }
 }
 
@@ -1169,15 +1196,18 @@ html.light .glass-navbar {
   color: var(--text-secondary);
 }
 
-@media (max-width: 768px) {
-  .about-content {
-    grid-template-columns: 1fr;
-    text-align: center;
-  }
+/* About mission card */
+.about-mission {
+  padding: 40px 30px;
+  text-align: center;
+  max-width: 500px;
+  margin: 40px auto 0;
+}
 
-  .about-stats {
-    justify-content: center;
-  }
+.mission-icon {
+  font-size: 3rem;
+  margin-bottom: 16px;
+  display: block;
 }
 
 /* ========== PRICING SECTION ========== */
