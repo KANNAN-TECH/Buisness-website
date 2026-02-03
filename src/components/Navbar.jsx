@@ -69,8 +69,19 @@ function Navbar() {
                     className="navbar-brand"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
+                    style={{ display: 'flex', alignItems: 'center', gap: '8px' }}
                 >
-                    KAdigtech
+                    <img
+                        src="/ka-logo.jpg"
+                        alt="KAdigtech Logo - Web & App Development Company"
+                        width="40"
+                        height="40"
+                        style={{
+                            borderRadius: '8px',
+                            objectFit: 'cover'
+                        }}
+                    />
+                    <span>KAdigtech</span>
                 </motion.a>
 
                 <ul className={`navbar-nav ${isMobileMenuOpen ? 'active' : ''}`}>
