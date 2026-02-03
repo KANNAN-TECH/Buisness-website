@@ -5,23 +5,33 @@ function Services() {
   const services = [
     {
       icon: '💻',
-      title: 'Website Design',
-      description: 'Modern UI/UX that converts visitors into customers'
+      title: 'Web Development',
+      description: 'Custom business websites, landing pages, portfolio sites, and e-commerce platforms built for speed and conversions.'
+    },
+    {
+      icon: '📱',
+      title: 'App Development',
+      description: 'Android and cross-platform mobile applications with smooth performance and modern UI.'
     },
     {
       icon: '⚙️',
-      title: 'Web Development',
-      description: 'Fast, secure, and scalable web applications'
+      title: 'Full Stack Development',
+      description: 'Complete frontend and backend solutions using React, Java Spring Boot, and PostgreSQL.'
     },
     {
-      icon: '🛒',
-      title: 'E-Commerce',
-      description: 'Complete online stores with payment integration'
+      icon: '🎨',
+      title: 'UI/UX Design',
+      description: 'Clean, user-friendly designs that improve engagement and customer experience.'
     },
     {
       icon: '🚀',
-      title: 'SEO Optimization',
-      description: 'Rank higher and drive organic traffic'
+      title: 'Website Optimization & SEO',
+      description: 'Speed optimization, technical SEO, and ranking improvements to get your business on top of Google.'
+    },
+    {
+      icon: '🛒',
+      title: 'E-Commerce Solutions',
+      description: 'Complete online stores with payment integration, inventory management, and secure checkout.'
     }
   ];
 
@@ -83,14 +93,14 @@ function Services() {
             className="section-title"
             variants={titleVariants}
           >
-            Powerful Digital Solutions for Modern Businesses
+            Our Services
           </motion.h2>
 
           <motion.p
             className="section-subtitle"
             variants={titleVariants}
           >
-            Everything you need to launch and scale online.
+            Powerful digital solutions for modern businesses. Everything you need to launch and scale online.
           </motion.p>
         </motion.div>
 
@@ -100,6 +110,7 @@ function Services() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
+          style={{ gridTemplateColumns: 'repeat(3, 1fr)' }}
         >
           {services.map((service, index) => (
             <motion.div

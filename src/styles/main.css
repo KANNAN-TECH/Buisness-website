@@ -1530,3 +1530,81 @@ html.light .glass-navbar {
     display: none;
   }
 }
+
+/* ========== MOBILE PERFORMANCE OPTIMIZATIONS ========== */
+/* Reduce animations on mobile devices */
+@media (max-width: 768px) {
+
+  /* Disable floating animations */
+  .hero-shape,
+  .hero-shape-1,
+  .hero-shape-2,
+  .hero-shape-3 {
+    animation: none !important;
+  }
+
+  /* Reduce hero background effects */
+  .hero::before,
+  .hero::after {
+    display: none;
+  }
+
+  /* Simplify card hover effects */
+  .glass-card:hover {
+    transform: none;
+  }
+
+  /* Reduce about section effects */
+  .about::before,
+  .contact::before {
+    display: none;
+  }
+
+  /* Disable icon floating */
+  .about-card-icon {
+    animation: none;
+  }
+
+  /* Simplify button hover */
+  .btn:hover {
+    transform: none;
+  }
+
+  /* Reduce mission icon animation */
+  .mission-icon {
+    animation: none !important;
+  }
+}
+
+/* Respect user's reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .hero-shape,
+  .hero-shape-1,
+  .hero-shape-2,
+  .hero-shape-3,
+  .about-card-icon,
+  .mission-icon {
+    animation: none !important;
+  }
+
+  .hero::before,
+  .hero::after,
+  .about::before,
+  .contact::before {
+    display: none;
+  }
+
+  .pulse-animation {
+    animation: none !important;
+  }
+}

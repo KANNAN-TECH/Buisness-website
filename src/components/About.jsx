@@ -53,15 +53,16 @@ function About() {
                     }}
                 >
                     <motion.div className="about-text" variants={titleVariants}>
-                        <h2 className="section-title">Why Choose KAdigtech?</h2>
+                        <h2 className="section-title">About KAdigtech</h2>
                         <p>
-                            We're a passionate team dedicated to creating beautiful,
-                            functional websites that help businesses grow online.
-                            Our focus is on delivering quality work that exceeds expectations.
+                            KAdigtech is a modern web development and digital solutions company based in India.
+                            We specialize in building fast, secure, and SEO-optimized websites and applications
+                            for startups, small businesses, and enterprises.
                         </p>
                         <p>
-                            From simple landing pages to complex web applications,
-                            we have the expertise to bring your vision to life.
+                            Our goal is simple — create technology that grows your business.
+                            With expertise in React, Spring Boot, and modern cloud technologies,
+                            we deliver scalable and future-ready products.
                         </p>
                     </motion.div>
 

@@ -196,6 +196,35 @@ function Footer() {
                     </motion.div>
                 </motion.div>
 
+                {/* SEO Footer Text - Hidden but crawlable */}
+                <motion.div
+                    className="footer-seo-text"
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    transition={{ delay: 0.3, duration: 0.5 }}
+                    viewport={{ once: true }}
+                    style={{
+                        marginTop: '40px',
+                        padding: '30px',
+                        background: 'rgba(124, 58, 237, 0.05)',
+                        borderRadius: '12px',
+                        border: '1px solid var(--border-glass)'
+                    }}
+                >
+                    <p style={{
+                        color: 'var(--text-muted)',
+                        fontSize: '0.9rem',
+                        lineHeight: '1.8',
+                        textAlign: 'center',
+                        maxWidth: '800px',
+                        margin: '0 auto'
+                    }}>
+                        KAdigtech provides professional website development, mobile app development, and full-stack
+                        software solutions across India. We help startups and businesses build fast, SEO-friendly,
+                        and scalable digital products using modern technologies like React, Spring Boot, and cloud hosting.
+                    </p>
+                </motion.div>
+
                 <motion.div
                     className="footer-bottom"
                     initial={{ opacity: 0 }}

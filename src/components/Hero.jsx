@@ -81,7 +81,7 @@ function Hero() {
                     variants={itemVariants}
                 >
                     <span className="badge-icon">🚀</span>
-                    <span>Your Digital Growth Partner</span>
+                    <span>Professional Web & App Development</span>
                 </motion.div>
 
                 {/* Line 2 - Main Big Heading */}
@@ -89,9 +89,9 @@ function Hero() {
                     className="hero-title"
                     variants={itemVariants}
                 >
-                    <span className="title-word">Design.</span>
-                    <span className="title-word highlight"> Develop.</span>
-                    <span className="title-word"> Dominate.</span>
+                    <span className="title-word">KAdigtech – </span>
+                    <span className="title-word highlight">Professional</span>
+                    <span className="title-word"> Web & App Development Company</span>
                 </motion.h1>
 
                 {/* Line 3 - Subtext */}
@@ -99,8 +99,42 @@ function Hero() {
                     className="hero-description"
                     variants={itemVariants}
                 >
-                    We build modern websites that grow your business online.
+                    We design high-performance websites and mobile applications that help businesses grow faster online.
+                    From modern UI design to powerful backend systems, we deliver complete digital solutions that convert visitors into customers.
                 </motion.p>
+
+                {/* Feature Checkmarks */}
+                <motion.div
+                    className="hero-features"
+                    variants={itemVariants}
+                    style={{
+                        display: 'flex',
+                        flexWrap: 'wrap',
+                        gap: '15px',
+                        justifyContent: 'center',
+                        marginBottom: '30px'
+                    }}
+                >
+                    {['Business Websites', 'E-Commerce Platforms', 'Mobile Apps', 'Custom Software Solutions'].map((feature, index) => (
+                        <span
+                            key={index}
+                            style={{
+                                display: 'inline-flex',
+                                alignItems: 'center',
+                                gap: '8px',
+                                padding: '8px 16px',
+                                background: 'rgba(124, 58, 237, 0.1)',
+                                border: '1px solid rgba(124, 58, 237, 0.3)',
+                                borderRadius: '20px',
+                                fontSize: '0.9rem',
+                                color: 'var(--text-secondary)'
+                            }}
+                        >
+                            <span style={{ color: '#22c55e' }}>✓</span>
+                            {feature}
+                        </span>
+                    ))}
+                </motion.div>
 
                 {/* Line 4 - Buttons */}
                 <motion.div
@@ -128,6 +162,18 @@ function Hero() {
                         View Pricing
                     </motion.a>
                 </motion.div>
+
+                {/* CTA Text */}
+                <motion.p
+                    variants={itemVariants}
+                    style={{
+                        marginTop: '20px',
+                        fontSize: '0.95rem',
+                        color: 'var(--text-muted)'
+                    }}
+                >
+                    Start your digital journey with KAdigtech today.
+                </motion.p>
             </motion.div>
         </section>
     );
